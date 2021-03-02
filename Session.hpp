@@ -4,7 +4,7 @@
 template <typename T>
 class StateRoot : private kuzco::Root<T> {
 public:
-    using Root<T>::Root;
+    using kuzco::Root<T>::Root;
 
     struct Transaction {
     public:
@@ -37,14 +37,14 @@ public:
         return Transaction(*this);
     }
 
-    using Root<T>::detach;
-    using Root<T>::detachedPayload;
+    using kuzco::Root<T>::detach;
+    using kuzco::Root<T>::detachedPayload;
 private:
     void endTransaction(bool store) {
-        Root<T>::endTransaction(store);
+        kuzco::Root<T>::endTransaction(store);
         if (store) {
             // only notify on stored transactions
-            Publisher<StateRoot<T>>::notifySubscribers(*this);
+            // Publisher<StateRoot<T>>::notifySubscribers(*this);
         }
     }
 };

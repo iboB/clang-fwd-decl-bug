@@ -10,7 +10,8 @@ public:
 };
 
 Session::Session()
-    : m_froot({})
+    : m_froot(kuzco::Node<ForwardDeclared>{})
+
 {}
 
 Session::~Session() = default;
